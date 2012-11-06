@@ -30,9 +30,10 @@ session.open
 # Execute a remote command
 result = session.run("free -m")
 
-result.success? # => true
-result.failure? # => false
-result.output # Get command output
+result.success?  # => true
+result.failure?  # => false
+result.exit_code # => 0
+result.output    # => command output text
 
 # Capture command output
 session.capture('cat /etc/lsb-release')
@@ -49,7 +50,7 @@ session.process_kill(PID)
 session.run_multiple(
   'git clone git@foobar.com:project.git',
   'cd project',
-  'bundle install'
+  'bundle install',
   'rake test'
 )
 
