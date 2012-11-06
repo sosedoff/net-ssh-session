@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version     = Net::SSH::Session::VERSION
   s.summary     = "Shell session for Net::SSH connections"
   s.description = "Shell interface with helper methods to work with Net::SSH connections"
-  s.homepage    = "http://somewhere.com"
+  s.homepage    = "https://github.com/sosedoff/net-ssh-session"
   s.authors     = ["Dan Sosedoff"]
   s.email       = ["dan.sosedoff@gmail.com"]
   
