@@ -47,6 +47,7 @@ session.read_file('/path')
 # Process helpers
 session.process_exists?(PID)
 session.process_kill(PID)
+session.last_exit_code # => 1
 
 # Environment helpers
 session.export('RAILS_ENV', 'production')
