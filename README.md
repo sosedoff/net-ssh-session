@@ -30,6 +30,7 @@ session.open
 # Execute a remote command
 result = session.run("free -m")
 
+# Net::SSH::SessionCommand helpers
 result.success?  # => true
 result.failure?  # => false
 result.exit_code # => 0
