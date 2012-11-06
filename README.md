@@ -50,7 +50,7 @@ session.process_kill(PID)
 
 # Environment helpers
 session.export('RAILS_ENV', 'production')
-session.env('RAILS_ENV')
+session.env('RAILS_ENV') # => production
 
 # Execute a batch of commands
 session.run_multiple(
