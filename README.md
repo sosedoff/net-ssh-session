@@ -21,7 +21,7 @@ result.failure? # => false
 result.output # Get command output
 
 # Capture command output
-result.capture('cat /etc/lsb-release')
+session.capture('cat /etc/lsb-release')
 
 # File helpers
 session.file_exists?('/path')
