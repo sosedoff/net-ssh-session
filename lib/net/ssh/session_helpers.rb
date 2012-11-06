@@ -35,6 +35,14 @@ module Net
       def process_exists?(pid)
         run("ps -p #{pid}").success?
       end
+
+      # Kill a process with the signal
+      # @param pid [String] process id
+      # @param signal [String] signal to send
+      # @return [Boolean]
+      def process_kill(pid, signal='SIGTERM')
+        run("kill -#{signal} #{pid}").sucess?
+      end
     end
   end
 end

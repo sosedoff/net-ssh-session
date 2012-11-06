@@ -27,6 +27,10 @@ session.capture('cat /etc/lsb-release')
 session.file_exists?('/path')
 session.directory_exists?('/path')
 
+# Process helpers
+session.process_exists?(PID)
+session.process_kill(PID)
+
 # Execute a batch of commands
 session.run_multiple(
   'git clone git@foobar.com:project.git',
