@@ -44,7 +44,7 @@ module Net
       # @param signal [String] signal to send
       # @return [Boolean] exection result
       def process_kill(pid, signal='SIGTERM')
-        run("kill -#{signal} #{pid}").sucess?
+        run("kill -#{signal} #{pid}").success?
       end
 
       # Export an environment variable
@@ -52,7 +52,7 @@ module Net
       # @param value [String] variable value
       # @return [Boolean] execution result
       def export(key, value)
-        run("export #{key}=#{value}").sucess?
+        run("export #{key}=#{value}").success?
       end
 
       # Get an environment variable
