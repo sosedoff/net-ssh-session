@@ -1,6 +1,6 @@
 # Net::SSH::Session
 
-A wrapper on top of Net::SSH and Net::SSH::Shell to provide a set of tools for ssh sessions
+A wrapper on top of `Net::SSH` and `Net::SSH::Shell` to provide a set of tools for ssh sessions
 
 ## Usage
 
