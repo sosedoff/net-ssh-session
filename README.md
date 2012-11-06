@@ -2,6 +2,20 @@
 
 A wrapper on top of `Net::SSH` and `Net::SSH::Shell` to provide a set of tools for ssh sessions
 
+## Install
+
+Install with rubygems:
+
+```
+gem install net-ssh-session
+```
+
+Install with bundler:
+
+```
+gem 'net-ssh-session', :github => 'sosedoff/net-ssh-session'
+```
+
 ## Usage
 
 Basic usage:
