@@ -62,6 +62,12 @@ module Net
         capture("echo $#{key}").to_s.strip
       end
 
+      # Get last executed command exit code
+      # @return [Integer] exit code
+      def last_exit_code
+        Integer(capture("echo $?").to_s.strip)
+      end
+
       # Set a timeout context for execution
       # @param time [Integer] max time for execution in seconds
       # @param block [Block] block to execute
