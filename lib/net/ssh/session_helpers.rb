@@ -1,3 +1,5 @@
+require 'timeout'
+
 module Net
   module SSH
     module SessionHelpers
@@ -58,6 +60,15 @@ module Net
       # @return [String] variable value
       def env(key)
         capture("echo $#{key}").to_s.strip
+      end
+
+      # Set a timeout context for execution
+      # @param time [Integer] max time for execution in seconds
+      # @param block [Block] block to execute
+      def with_timeout(time, &block)
+        Timeout.timeout(time) do
+          block.call(self)
+        end
       end
     end
   end
