@@ -12,7 +12,8 @@ module Net
       # @path [String] file path
       # @return [String] file contents
       def read_file(path)
-        run("cat #{path}")
+        result = run("cat #{path}")
+        result.success? ? result.output : ''
       end
 
       # Check if remote directory exists
