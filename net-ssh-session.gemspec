@@ -2,7 +2,7 @@ require File.expand_path('../lib/net-ssh-session/version', __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "net-ssh-session"
-  s.version     = "0.1.0"
+  s.version     = Net::SSH::Session::VERSION
   s.summary     = "Shell session for Net::SSH connections"
   s.description = "Shell interface with helper methods to work with Net::SSH connections"
   s.homepage    = "http://somewhere.com"
