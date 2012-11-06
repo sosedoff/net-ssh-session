@@ -60,7 +60,7 @@ session.close
 
 ### Running multiple commands
 
-By default multiple command execution will not break if one of the commands fails. If you want to break the chain on the first failure, supply `:break => false` option:
+By default multiple command execution will not break if one of the commands fails. If you want to break the chain on the first failure, supply `:break => true` option:
 
 ```ruby
 session.run_multiple(commands, :break => true)
