@@ -41,6 +41,7 @@ session.capture('cat /etc/lsb-release')
 # File helpers
 session.file_exists?('/path')
 session.directory_exists?('/path')
+session.read_file('/path')
 
 # Process helpers
 session.process_exists?(PID)
