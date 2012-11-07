@@ -70,6 +70,10 @@ rescue Timeout::Error
   puts "Operation took too long :("
 end
 
+# Execute a long command and show ongoing process
+session.run("rake test") do |str|
+  puts str
+end
 
 # Close current session
 session.close
