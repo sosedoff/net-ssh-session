@@ -63,6 +63,7 @@ module Net
 
         exit_code = exec(command) do |process, data|
           output << data
+          yield data if block_given?
         end
 
         SessionCommand.new(command, output, exit_code)
