@@ -24,10 +24,14 @@ module Net
       end
 
       # Establish connection with remote server
+      # @param timeout [Integer] max timeout in seconds
       # @return [Boolean]
-      def open
-        @connection = Net::SSH.start(host, user, :password => password)
-        @shell = @connection.shell
+      def open(timeout=nil)
+        if timeout && timeout > 0
+          with_timeout(timeout) { establish_connection }
+        else
+          establish_connection
+        end
       end
 
       # Close connection with remote server
@@ -88,6 +92,13 @@ module Net
         end
 
         results
+      end
+
+      private
+
+      def establish_connection
+        @connection = Net::SSH.start(host, user, :password => password)
+        @shell = @connection.shell
       end
     end
   end
