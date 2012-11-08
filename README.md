@@ -27,6 +27,10 @@ require 'net/ssh/session'
 session = Net::SSH::Session.new(host, user, password)
 session.open
 
+# If you want to set a connection timeout in seconds
+# it will raise Timeout::Error 
+session.open(10)
+
 # Execute a remote command
 result = session.run("free -m")
 
