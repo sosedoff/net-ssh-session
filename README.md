@@ -79,6 +79,14 @@ session.run("rake test") do |str|
   puts str
 end
 
+# Get history, returns an array with Net::SSH::SessionCommand objects
+session.history.each do |cmd|
+  puts cmd.to_s # => I, [2012-11-08T00:10:48.229986 #51878]  INFO -- : [bundle install --path .bundle] => 10, 35 bytes
+  if cmd.success?
+    # do your thing
+  end
+end
+
 # Close current session
 session.close
 ```
