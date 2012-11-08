@@ -13,15 +13,17 @@ module Net
       attr_reader :connection, :shell
       attr_reader :options
       attr_reader :logger
+      attr_reader :history
 
       # Initialize a new ssh session
       # @param host [String] remote hostname or ip address
       # @param user [String] remote account username
       # @param password [String] remote account password
       def initialize(host, user, password='')
-        @host = host
-        @user = user
+        @host     = host
+        @user     = user
         @password = password
+        @history  = []
       end
 
       # Establish connection with remote server
@@ -72,6 +74,7 @@ module Net
         end
 
         cmd = SessionCommand.new(command, output, exit_code)
+        history << cmd
         logger.info(cmd.to_s) if logger
         cmd
       end
