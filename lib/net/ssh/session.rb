@@ -67,14 +67,20 @@ module Net
       # @param options [Hash] execution options
       # @return [SessionCommand]
       def run(command, options={})
-        output = ''
+        output  = ''
+        t_start = Time.now
 
         exit_code = exec(command) do |process, data|
           output << data
           yield data if block_given?
         end
 
-        cmd = SessionCommand.new(command, output, exit_code)
+        t_end = Time.now
+
+        cmd = SessionCommand.new(
+          command, output, exit_code, 
+          t_end - t_start
+        )
 
         history << cmd unless options[:history] == false
         logger.info(cmd.to_s) if logger

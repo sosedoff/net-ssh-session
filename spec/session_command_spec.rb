@@ -3,11 +3,12 @@ require 'spec_helper'
 describe Net::SSH::SessionCommand do
   describe '#initialize' do
     it 'assigns attributes' do
-      cmd = Net::SSH::SessionCommand.new('cmd', 'output', '128')
+      cmd = Net::SSH::SessionCommand.new('cmd', 'output', '128', 1.5)
 
       cmd.command.should be_a String
       cmd.output.should be_a String
       cmd.exit_code.should be_a Fixnum
+      cmd.duration.should be_a Float
     end
 
     it 'sets exit code to 1 on invalid value' do
@@ -48,8 +49,8 @@ describe Net::SSH::SessionCommand do
 
   describe '#to_s' do
     it 'returns command string representation' do
-      cmd = Net::SSH::SessionCommand.new('cmd', 'output', '0')
-      cmd.to_s.should eq("[cmd] => 0, 6 bytes")
+      cmd = Net::SSH::SessionCommand.new('cmd', 'output', '0', 1.234)
+      cmd.to_s.should eq("[cmd] => 0, 6 bytes, 1.234 seconds")
     end
   end
 end
