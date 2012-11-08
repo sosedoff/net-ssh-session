@@ -12,6 +12,7 @@ module Net
       attr_reader :host, :user, :password
       attr_reader :connection, :shell
       attr_reader :options
+      attr_reader :logger
 
       # Initialize a new ssh session
       # @param host [String] remote hostname or ip address
@@ -70,7 +71,9 @@ module Net
           yield data if block_given?
         end
 
-        SessionCommand.new(command, output, exit_code)
+        cmd = SessionCommand.new(command, output, exit_code)
+        logger.info(cmd.to_s) if logger
+        cmd
       end
 
       # Execute multiple commands
@@ -92,6 +95,11 @@ module Net
         end
 
         results
+      end
+
+      # Set a global session logger for commands
+      def logger=(log)
+        @logger = log
       end
 
       private

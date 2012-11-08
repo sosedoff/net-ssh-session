@@ -25,10 +25,10 @@ module Net
         exit_code != 0
       end
 
-      # Get command output
+      # Get command string representation
       # @return [String]
       def to_s
-        output
+        "[#{command}] => #{exit_code}, #{output.to_s.bytesize} bytes"
       end
     end
   end
