@@ -9,6 +9,11 @@ describe Net::SSH::SessionCommand do
       cmd.output.should be_a String
       cmd.exit_code.should be_a Fixnum
     end
+
+    it 'sets exit code to 1 on invalid value' do
+      cmd = Net::SSH::SessionCommand.new('cmd', 'output', 'ohai')
+      cmd.exit_code.should eq(1)
+    end
   end
 
   describe '#success?' do

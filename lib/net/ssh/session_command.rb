@@ -10,7 +10,7 @@ module Net
       def initialize(command, output, exit_code)
         @command   = command
         @output    = output
-        @exit_code = Integer(exit_code)
+        @exit_code = Integer(exit_code) rescue 1
       end
 
       # Check if exit code is successful
