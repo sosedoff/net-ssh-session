@@ -101,6 +101,33 @@ session.run_multiple(commands) do |cmd|
 end
 ```
 
+### Using session logger
+
+If you want to log command execution for the whole session you can assign a logger:
+
+```ruby
+require 'logger'
+require 'net/ssh/session'
+
+s = Net::SSH::Session.new(host, user, password)
+s.logger = Logger.new(STDOUT)
+s.open
+
+s.run("cd /tmp")
+s.run("git clone git://github.com/sosedoff/net-ssh-session.git")
+s.run("bundle install --path .bundle")
+
+s.close
+```
+
+Since the logger is set to write to `STDOUT` you'll see something like this:
+
+```
+I, [2012-11-08T00:10:47.605916 #51878]  INFO -- : [cd /tmp] => 0, 0 bytes
+I, [2012-11-08T00:10:48.038294 #51878]  INFO -- : [git clone git://github.com/sosedoff/net-ssh-session.git] => 0, 7795 bytes
+I, [2012-11-08T00:10:48.229986 #51878]  INFO -- : [bundle install --path .bundle] => 10, 35 bytes
+```
+
 ## Credits
 
 Library code was extracted and modified from multiple sources:
