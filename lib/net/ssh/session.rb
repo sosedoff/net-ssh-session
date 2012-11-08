@@ -64,8 +64,9 @@ module Net
 
       # Execute a single command
       # @param command [String] comand to execute
+      # @param options [Hash] execution options
       # @return [SessionCommand]
-      def run(command)
+      def run(command, options={})
         output = ''
 
         exit_code = exec(command) do |process, data|
@@ -74,8 +75,10 @@ module Net
         end
 
         cmd = SessionCommand.new(command, output, exit_code)
-        history << cmd
+
+        history << cmd unless options[:history] == false
         logger.info(cmd.to_s) if logger
+
         cmd
       end
 
