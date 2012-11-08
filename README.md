@@ -136,6 +136,28 @@ I, [2012-11-08T00:10:48.038294 #51878]  INFO -- : [git clone git://github.com/so
 I, [2012-11-08T00:10:48.229986 #51878]  INFO -- : [bundle install --path .bundle] => 10, 35 bytes
 ```
 
+## Execution history
+
+By default each session command (`Net::SSH::SessionCommand`) will be records in 
+session history. Example how to skip history tracking:
+
+```ruby
+require 'net/ssh/session'
+
+s = Net::SSH::Session.new(host, user, password)
+s.open
+
+# Run commands with no history
+s.run("export RAILS_ENV=test", :history => false)
+r.run("mysqlcheck --repair mysql proc -u root", :history => false)
+
+# Rest will be recorded
+s.run("git clone git://github.com/sosedoff/net-ssh-session.git")
+s.run("bundler install --path .")
+
+s.close
+```
+
 ## Credits
 
 Library code was extracted and modified from multiple sources:
