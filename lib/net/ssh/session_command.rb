@@ -1,8 +1,9 @@
 module Net
   module SSH
     class SessionCommand
-      attr_reader :command, :output, :exit_code
-      attr_reader :duration
+      attr_reader   :command, :output, :exit_code
+      attr_reader   :duration
+      attr_accessor :start_time, :finish_time
       
       # Initialize a new session command
       # @param command [String] original command
