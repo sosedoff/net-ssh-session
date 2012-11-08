@@ -91,6 +91,8 @@ end
 session.close
 ```
 
+## Advanced Usage
+
 ### Running multiple commands
 
 By default multiple command execution will not break if one of the commands fails. If you want to break the chain on the first failure, supply `:break => true` option:
@@ -136,9 +138,9 @@ I, [2012-11-08T00:10:48.038294 #51878]  INFO -- : [git clone git://github.com/so
 I, [2012-11-08T00:10:48.229986 #51878]  INFO -- : [bundle install --path .bundle] => 10, 35 bytes
 ```
 
-## Execution history
+### Execution history
 
-By default each session command (`Net::SSH::SessionCommand`) will be records in 
+By default each session command (`Net::SSH::SessionCommand`) will be recorded in 
 session history. Example how to skip history tracking:
 
 ```ruby
