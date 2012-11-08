@@ -39,6 +39,7 @@ result.success?  # => true
 result.failure?  # => false
 result.exit_code # => 0
 result.output    # => command output text
+result.duration  # => execution time, seconds
 
 # Capture command output
 session.capture('cat /etc/lsb-release')
