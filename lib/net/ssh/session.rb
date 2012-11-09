@@ -14,7 +14,6 @@ module Net
       attr_reader :options
       attr_reader :logger
       attr_reader :history
-      attr_reader :stream
 
       # Initialize a new ssh session
       # @param host [String] remote hostname or ip address
@@ -73,7 +72,6 @@ module Net
 
         exit_code = exec(command) do |process, data|
           output << data
-          stream.call(output) if stream
           yield data if block_given?
         end
 
@@ -114,10 +112,6 @@ module Net
       # Set a global session logger for commands
       def logger=(log)
         @logger = log
-      end
-
-      def stream=(proc)
-        @stream = proc
       end
 
       private
