@@ -7,6 +7,8 @@ require 'net/ssh/session_command'
 module Net
   module SSH
     class Session
+      VERSION = '0.1.0'
+      
       include Net::SSH::SessionHelpers
 
       attr_reader :host, :user, :password
