@@ -1,4 +1,4 @@
-require File.expand_path('../lib/net/ssh/session', __FILE__)
+require File.expand_path('../lib/net-ssh-session/version', __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "net-ssh-session"
