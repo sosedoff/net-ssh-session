@@ -5,9 +5,15 @@ module Net
     module SessionHelpers
       # Swith current directory
       # @param path [String] directory path
-      # @return [Booleab] execution result
+      # @return [Boolean] execution result
       def chdir(path)
         run("cd #{path}").success?
+      end
+
+      # Get current directory
+      # @return [String]
+      def pwd
+        capture("pwd")
       end
 
       # Execute command and capture any output
