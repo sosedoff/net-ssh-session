@@ -13,7 +13,7 @@ module Net
       # Get current directory
       # @return [String]
       def pwd
-        capture("pwd")
+        capture("pwd").strip
       end
 
       # Execute command and capture any output
