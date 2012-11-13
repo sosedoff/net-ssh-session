@@ -3,6 +3,13 @@ require 'timeout'
 module Net
   module SSH
     module SessionHelpers
+      # Swith current directory
+      # @param path [String] directory path
+      # @return [Booleab] execution result
+      def chdir(path)
+        run("cd #{path}").success?
+      end
+
       # Execute command and capture any output
       # @param command [String] command to execute
       # @return [String] execution result
