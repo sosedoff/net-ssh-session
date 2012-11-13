@@ -62,6 +62,15 @@ module Net
         run("export #{key}=#{value}").success?
       end
 
+      # Export environment vars from hash
+      # @param data [Hash]
+      # @return [Boolean] execution result
+      def export_from_hash(data={})
+        data.each_pair do |k, v|
+          export(k, v)
+        end
+      end
+
       # Get an environment variable
       # @param key [String] variable name
       # @return [String] variable value
