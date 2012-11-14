@@ -115,18 +115,18 @@ describe Net::SSH::SessionHelpers do
 
   describe '#with_timeout' do
     let(:worker) do
-      proc { sleep 0.5 }
+      proc { sleep 1 }
     end
 
     it 'raises timeout error if exceded' do
       expect { 
-        session.with_timeout(0.2, &worker) 
+        session.with_timeout(0.5, &worker) 
       }.to raise_error Timeout::Error
     end
 
     it 'runs normally' do
       expect { 
-        session.with_timeout(0.5, &worker) 
+        session.with_timeout(2, &worker) 
       }.not_to raise_error Timeout::Error
     end
   end
