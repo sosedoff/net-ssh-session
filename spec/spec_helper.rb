@@ -10,3 +10,7 @@ end
 def fixture(file)
   File.read(File.join(fixture_path, file))
 end
+
+def fake_run(command, output, exit_code=0, duration=0)
+  Net::SSH::SessionCommand.new(command, output, exit_code, duration)
+end

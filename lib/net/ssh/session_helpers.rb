@@ -13,14 +13,14 @@ module Net
       # Get current directory
       # @return [String]
       def pwd
-        capture("pwd").strip
+        capture("pwd")
       end
 
       # Execute command and capture any output
       # @param command [String] command to execute
       # @return [String] execution result
       def capture(command)
-        run(command).output
+        run(command).output.strip
       end
 
       # Read remote file contents
@@ -81,13 +81,13 @@ module Net
       # @param key [String] variable name
       # @return [String] variable value
       def env(key)
-        capture("echo $#{key}").to_s.strip
+        capture("echo $#{key}")
       end
 
       # Get last executed command exit code
       # @return [Integer] exit code
       def last_exit_code
-        Integer(capture("echo $?").to_s.strip)
+        Integer(capture("echo $?"))
       end
 
       # Set a timeout context for execution

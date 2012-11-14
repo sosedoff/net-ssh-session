@@ -12,7 +12,7 @@ module Net
       # @param duration [Float] execution time in seconds
       def initialize(command, output, exit_code, duration=0)
         @command   = command
-        @output    = output
+        @output    = output || ''
         @exit_code = Integer(exit_code) rescue 1
         @duration  = Float(duration)
       end
