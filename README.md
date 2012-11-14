@@ -55,8 +55,12 @@ session.process_kill(PID)
 session.last_exit_code # => 1
 
 # Environment helpers
-session.export('RAILS_ENV', 'production')
 session.env('RAILS_ENV') # => production
+session.export('RAILS_ENV', 'production')
+session.export_hash(
+  'RAILS_ENV' => 'test',
+  'RACK_ENV'  => 'test'
+)
 
 # Execute a batch of commands
 session.run_multiple(
