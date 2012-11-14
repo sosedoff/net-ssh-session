@@ -56,8 +56,9 @@ module Net
       # @param pid [String] process id
       # @param signal [String] signal to send
       # @return [Boolean] exection result
-      def process_kill(pid, signal='SIGTERM')
-        run("kill -#{signal} #{pid}").success?
+      def kill_process(pid, signal='SIGTERM')
+        run("kill -#{signal} #{pid}")
+        process_exists?(pid)
       end
 
       # Export an environment variable

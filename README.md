@@ -51,7 +51,8 @@ session.read_file('/path')
 
 # Process helpers
 session.process_exists?(PID)
-session.process_kill(PID)
+session.kill_process(PID) # => true
+session.kill_process(PID, 'SIGINT') # => false
 session.last_exit_code # => 1
 
 # Environment helpers

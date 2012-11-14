@@ -113,6 +113,24 @@ describe Net::SSH::SessionHelpers do
     end
   end
 
+  describe '#kill_process' do
+    before do
+      session.stub(:run).with('kill -SIGTERM 123').and_return(fake_run('kill -SIGTERM 123', nil, 0))
+      session.stub(:run).with('ps -p 123').and_return(fake_run('ps -p 123', nil, 0))
+
+      session.stub(:run).with('kill -SIGTERM 345').and_return(fake_run('kill -SIGTERM 345', nil, 0))
+      session.stub(:run).with('ps -p 345').and_return(fake_run('ps -p 345', nil, 1))
+    end
+
+    it 'returns true if process was killed and does not exist' do
+      session.kill_process(123).should be_true
+    end
+
+    it 'returns false if process is still alive' do
+      session.kill_process(345).should be_false
+    end
+  end
+
   describe '#with_timeout' do
     let(:worker) do
       proc { sleep 1 }
