@@ -3,6 +3,14 @@ require 'timeout'
 module Net
   module SSH
     module SessionHelpers
+      # Execute command with sudo
+      # @param [String] command string
+      # @param [Hash] execution options
+      # @return [SessionCommand]
+      def sudo(command, options={})
+        run("sudo #{command}", options)
+      end
+
       # Swith current directory
       # @param path [String] directory path
       # @return [Boolean] execution result
