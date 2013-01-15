@@ -71,6 +71,9 @@ session.run_multiple(
   'rake test'
 )
 
+# Execute as sudo
+session.sudo("whoami")
+
 # Execute with time limit (10s)
 begin
   session.with_timeout(10) do
