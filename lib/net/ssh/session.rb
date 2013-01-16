@@ -16,9 +16,9 @@ module Net
       attr_reader :history
 
       # Initialize a new ssh session
-      # @param host [String] remote hostname or ip address
-      # @param user [String] remote account username
-      # @param password [String] remote account password
+      # @param [String] remote hostname or ip address
+      # @param [String] remote account username
+      # @param [String] remote account password
       def initialize(host, user, password='')
         @host     = host
         @user     = user
@@ -27,7 +27,7 @@ module Net
       end
 
       # Establish connection with remote server
-      # @param timeout [Integer] max timeout in seconds
+      # @param [Integer] max timeout in seconds
       # @return [Boolean]
       def open(timeout=nil)
         if timeout && timeout > 0
@@ -48,8 +48,8 @@ module Net
       end
 
       # Execute command
-      # @param command [String] command to execute
-      # @param on_output [Block] output event block
+      # @param [String] command to execute
+      # @param [Block] output event block
       # @return [Integer] command execution exit code
       def exec(command, &on_output)
         status = nil
@@ -63,8 +63,8 @@ module Net
       end
 
       # Execute a single command
-      # @param command [String] comand to execute
-      # @param options [Hash] execution options
+      # @param [String] comand to execute
+      # @param [Hash] execution options
       # @return [SessionCommand]
       def run(command, options={})
         output  = ''
@@ -89,8 +89,8 @@ module Net
       end
 
       # Execute multiple commands
-      # @param commands [Array] set of commands to execute
-      # @param options [Hash] execution options
+      # @param [Array] set of commands to execute
+      # @param [Hash] execution options
       # @return [Array] set of command execution results
       # 
       # Execution options are the following:
@@ -110,6 +110,7 @@ module Net
       end
 
       # Set a global session logger for commands
+      # @param [Logger] logger instance
       def logger=(log)
         @logger = log
       end
