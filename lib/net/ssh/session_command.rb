@@ -30,6 +30,8 @@ module Net
         exit_code != 0
       end
 
+      alias :error? :failure?
+
       # Get command string representation
       # @return [String]
       def to_s

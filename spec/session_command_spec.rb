@@ -45,6 +45,11 @@ describe Net::SSH::SessionCommand do
       cmd = Net::SSH::SessionCommand.new('cmd', 'output', '0')
       cmd.failure?.should be_false
     end
+
+    it 'has a :error? alias method' do
+      cmd = Net::SSH::SessionCommand.new('cmd', 'output', '0')
+      cmd.should respond_to :error?
+    end
   end
 
   describe '#to_s' do
