@@ -19,11 +19,17 @@ module Net
       # @param [String] remote hostname or ip address
       # @param [String] remote account username
       # @param [String] remote account password
-      def initialize(host, user, password='')
-        @host     = host
-        @user     = user
-        @password = password
-        @history  = []
+      # @param [Hash] options hash
+      def initialize(host, user, password='', options={})
+        @host          = host
+        @user          = user
+        @password      = password
+        @history       = []
+        @track_history = true
+
+        if options[:history] == false
+          @track_history = false
+        end
       end
 
       # Establish connection with remote server
@@ -82,7 +88,10 @@ module Net
           t_end - t_start
         )
 
-        history << cmd unless options[:history] == false
+        if options[:history] == true || @track_history == true
+          history << cmd
+        end
+
         logger.info(cmd.to_s) if logger
 
         cmd

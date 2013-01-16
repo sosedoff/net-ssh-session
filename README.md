@@ -169,6 +169,12 @@ s.run("bundler install --path .")
 s.close
 ```
 
+You can also disable histroy for the whole session:
+
+```ruby
+Net::SSH::Session.new(host, user, password, :history => false)
+```
+
 ## Credits
 
 Library code was extracted and modified from multiple sources:
