@@ -1,19 +1,20 @@
 module Net
   module SSH
     class SessionCommand
-      attr_reader   :command, :output, :exit_code
-      attr_reader   :duration
+      attr_reader :command, :duration
+      attr_accessor :output, :exit_code
       attr_accessor :start_time, :finish_time
       
       # Initialize a new session command
-      # @param command [String] original command
-      # @param output [String] command execution output
-      # @param exit_code [Integer] command execution exit code
-      # @param duration [Float] execution time in seconds
-      def initialize(command, output, exit_code, duration=0)
+      #
+      # @param [String] original command
+      # @param [String] command execution output
+      # @param [Integer] command execution exit code
+      # @param [Float] execution time in seconds
+      def initialize(command, output=nil, exit_code=nil, duration=0)
         @command   = command
         @output    = output || ''
-        @exit_code = Integer(exit_code) rescue 1
+        @exit_code = Integer(exit_code) rescue 1 if exit_code != nil
         @duration  = Float(duration)
       end
 
