@@ -124,6 +124,12 @@ module Net
         @logger = log
       end
 
+      # Get last executed command
+      # @return [SessionCommand]
+      def last_command
+        history.last
+      end
+
       private
 
       def establish_connection
