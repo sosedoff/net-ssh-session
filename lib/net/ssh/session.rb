@@ -88,6 +88,9 @@ module Net
           t_end - t_start
         )
 
+        cmd.start_time = t_start
+        cmd.finish_time = t_end
+
         if options[:history] == true || @track_history == true
           history << cmd
         end
