@@ -124,6 +124,10 @@ module Net
         @logger = log
       end
 
+      def method_missing(name, *args)
+        run("#{name} #{args.join(' ')}".strip)
+      end
+
       private
 
       def establish_connection
