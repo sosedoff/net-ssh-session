@@ -71,6 +71,10 @@ session.run_multiple(
   'rake test'
 )
 
+# Execute by calling a method
+session.ping("-c 5", "google.com")
+session.df('-h')
+
 # Execute as sudo
 session.sudo("whoami")
 
