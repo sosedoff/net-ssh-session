@@ -58,4 +58,14 @@ describe Net::SSH::SessionCommand do
       cmd.to_s.should eq("[cmd] => 0, 6 bytes, 1.234 seconds")
     end
   end
+
+  describe '#to_hash' do
+    it 'returns command hash representation' do
+      cmd = Net::SSH::SessionCommand.new('cmd', 'output', '0', 1.234)
+      hash = cmd.to_hash
+
+      hash.should include 'command', 'output', 'exit_code'
+      hash.should include 'start_time', 'finish_time', 'duration'
+    end
+  end
 end

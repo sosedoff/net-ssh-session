@@ -37,6 +37,19 @@ module Net
       def to_s
         "[#{command}] => #{exit_code}, #{output.to_s.bytesize} bytes, #{duration} seconds"
       end
+
+      # Get command hash representation
+      # @return [Hash]
+      def to_hash
+        {
+          'command'     => command,
+          'output'      => output,
+          'exit_code'   => exit_code,
+          'start_time'  => start_time,
+          'finish_time' => finish_time,
+          'duration'    => duration
+        }
+      end
     end
   end
 end
