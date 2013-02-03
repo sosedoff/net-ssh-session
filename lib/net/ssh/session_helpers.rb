@@ -69,6 +69,20 @@ module Net
         process_exists?(pid)
       end
 
+      # Check if user exists
+      # @param [String] username
+      # @return [Boolean]
+      def has_user?(name, options={})
+        run("id #{name}").success?
+      end
+
+      # Check if group exists
+      # @param [String] group name
+      # @return [Boolean]
+      def has_group?(name)
+        run("id -g #{name}").success?
+      end
+
       # Export an environment variable
       # @param key [String] variable name
       # @param value [String] variable value
