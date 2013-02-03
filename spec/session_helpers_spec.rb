@@ -144,4 +144,19 @@ describe Net::SSH::SessionHelpers do
       expect { session.with_timeout(2, &worker) }.not_to raise_error Timeout::Error
     end
   end
+
+  describe '#has_user?' do
+    before do
+      session.stub(:run).with('id foo').and_return(fake_run('id foo', "id: foo: No such user\n", 1))
+      session.stub(:run).with('id bar').and_return(fake_run('id bar', "uid=1000(bar) gid=1000(bar) groups=1000(bar)\n"))
+    end
+
+    it 'returns true if user exists' do
+      session.has_user?('foo').should be_false
+    end
+
+    it 'returns false if user does not exist' do
+      session.has_user?('bar').should be_true
+    end
+  end
 end
