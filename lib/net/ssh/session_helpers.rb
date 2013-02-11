@@ -47,10 +47,17 @@ module Net
       end
 
       # Check if remote file exists
-      # @param path [String] file path
+      # @param [String] file path
       # @return [Boolean] execution result
       def file_exists?(path)
         run("test -f #{path}").success?
+      end
+
+      # Check if a symbilic link exists
+      # @param [String] file path
+      # @return [Boolean]
+      def symlink_exists?(path)
+        run("test -h #{path}").success?
       end
 
       # Check if process with PID is running
