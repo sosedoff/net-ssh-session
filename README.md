@@ -118,6 +118,8 @@ session.run_multiple(commands, :break => true)
 To get each command result after execution, you can supply a block:
 
 ```ruby
+commands = ["mkdir /tmp", "echo test > /tmp/file", "rm -rf /tmp"]
+
 session.run_multiple(commands) do |cmd|
   puts "Original command: #{cmd.command}"
   puts "Exit code: #{cmd.exit_code}"
