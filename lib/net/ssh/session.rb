@@ -66,13 +66,15 @@ module Net
       def exec(command, &on_output)
         status = nil
 
-        shell.execute(command) do |process|
-          process.on_output(&on_output)
-          process.on_error_output(&on_output)
-          process.on_finish { |p| status = p.exit_status }
-        end
+        handle_timeout do
+          shell.execute(command) do |process|
+            process.on_output(&on_output)
+            process.on_error_output(&on_output)
+            process.on_finish { |p| status = p.exit_status }
+          end
 
-        shell.session.loop(1) { status.nil? }
+          shell.session.loop(1) { status.nil? }
+        end
 
         status
       end
