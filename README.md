@@ -189,3 +189,7 @@ Library code was extracted and modified from multiple sources:
 - Michael Klishin (@michaelklishin)
 - Sven Fuchs (@svenfuchs)
 - Travis-CI (@travis-ci)
+
+## License
+
+See LICENSE file for details
