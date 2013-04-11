@@ -14,6 +14,7 @@ module Net
       attr_reader :options
       attr_reader :logger
       attr_reader :history
+      attr_reader :timeout
 
       # Initialize a new ssh session
       # @param [String] remote hostname or ip address
@@ -26,6 +27,7 @@ module Net
         @password      = password
         @history       = []
         @track_history = true
+        @timeout       = false
 
         if options[:history] == false
           @track_history = false
