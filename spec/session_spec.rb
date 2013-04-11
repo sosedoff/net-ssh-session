@@ -24,4 +24,24 @@ describe Net::SSH::Session do
       expect(session.uname.output).to eq "Linux"
     end
   end
+
+  describe '#run' do
+    context 'when session timeout is set' do
+      let(:process) do
+        proc { sleep 5 }
+      end
+
+      let(:session) do
+        Net::SSH::Session.new('host', 'user', 'password', :timeout => 1)
+      end
+
+      before do
+        session.stub(:exec).with('foo') { process.call }
+      end
+
+      it 'raises error if operation timed out' do
+        expect { session.run('foo') }.to raise_error Timeout::Error
+      end
+    end
+  end
 end

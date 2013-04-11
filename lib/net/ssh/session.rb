@@ -65,12 +65,15 @@ module Net
       # @return [Integer] command execution exit code
       def exec(command, &on_output)
         status = nil
+
         shell.execute(command) do |process|
           process.on_output(&on_output)
           process.on_error_output(&on_output)
           process.on_finish { |p| status = p.exit_status }
         end
+
         shell.session.loop(1) { status.nil? }
+
         status
       end
 
@@ -82,9 +85,11 @@ module Net
         output  = ''
         t_start = Time.now
 
-        exit_code = exec(command) do |process, data|
-          output << data
-          yield data if block_given?
+        handle_timeout do
+          exit_code = exec(command) do |process, data|
+            output << data
+            yield data if block_given?
+          end
         end
 
         t_end = Time.now
@@ -148,6 +153,14 @@ module Net
       def establish_connection
         @connection = Net::SSH.start(host, user, :password => password)
         @shell = @connection.shell
+      end
+
+      def handle_timeout(&block)
+        if timeout
+          Timeout.timeout(timeout) { block.call(self) }
+        else
+          block.call(self)
+        end
       end
     end
   end
