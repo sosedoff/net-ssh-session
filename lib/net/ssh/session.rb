@@ -85,11 +85,9 @@ module Net
         output  = ''
         t_start = Time.now
 
-        handle_timeout do
-          exit_code = exec(command) do |process, data|
-            output << data
-            yield data if block_given?
-          end
+        exit_code = exec(command) do |process, data|
+          output << data
+          yield data if block_given?
         end
 
         t_end = Time.now
