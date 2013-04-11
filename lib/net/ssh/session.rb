@@ -27,10 +27,14 @@ module Net
         @password      = password
         @history       = []
         @track_history = true
-        @timeout       = false
+        @timeout       = options[:timeout]
 
         if options[:history] == false
           @track_history = false
+        end
+
+        if @timeout && !@timeout.kind_of?(Integer)
+          raise ArgumentError, "Timeout value should be numeric"
         end
       end
 

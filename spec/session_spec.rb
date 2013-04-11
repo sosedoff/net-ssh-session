@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 describe Net::SSH::Session do
+  describe '#initialize' do
+    context 'with :timeout option' do
+      it 'raises error if timeout value is not numeric' do
+        expect {
+          Net::SSH::Session.new('host', 'user', 'password', :timeout => 'data')
+        }.to raise_error ArgumentError, "Timeout value should be numeric"
+      end
+    end
+  end 
+
   describe '#method_missing' do
     let(:session) { Net::SSH::Session.new('host', 'user', 'password') }
 
