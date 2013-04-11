@@ -36,7 +36,7 @@ describe Net::SSH::Session do
       end
 
       before do
-        session.stub(:exec).with('foo') { process.call }
+        session.stub_chain(:shell, :execute).with('foo') { process.call }
       end
 
       it 'raises error if operation timed out' do
