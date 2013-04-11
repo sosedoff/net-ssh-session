@@ -182,6 +182,17 @@ You can also disable history for the whole session:
 Net::SSH::Session.new(host, user, password, :history => false)
 ```
 
+## Execute any command with timeout
+
+To enable session-wide command execution timeout, pass an extra option:
+
+```ruby
+session = Net::SSH::Session.new(host, user, password, :timeout => 10)
+```
+
+This will limit any command execution time to 10 seconds. Error `Timeout::Error`
+will be raised when timeout is exceeded.
+
 ## Credits
 
 Library code was extracted and modified from multiple sources:
