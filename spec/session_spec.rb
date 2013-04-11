@@ -8,6 +8,11 @@ describe Net::SSH::Session do
           Net::SSH::Session.new('host', 'user', 'password', :timeout => 'data')
         }.to raise_error ArgumentError, "Timeout value should be numeric"
       end
+
+      it 'sets global session timeout value' do
+        session = Net::SSH::Session.new('host', 'user', 'password', :timeout => 1)
+        expect(session.timeout).to eq 1
+      end
     end
   end 
 
