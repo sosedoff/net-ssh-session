@@ -144,6 +144,9 @@ module Net
         history.last
       end
 
+      # Execute a dynamic command
+      # @param [String] command name
+      # @params [Array] command arguments
       def method_missing(name, *args)
         run("#{name} #{args.join(' ')}".strip)
       end
