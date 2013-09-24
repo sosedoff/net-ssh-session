@@ -137,11 +137,11 @@ describe Net::SSH::SessionHelpers do
     end
 
     it 'raises timeout error if exceded' do
-      expect { session.with_timeout(0.5, &worker) }.to raise_error Timeout::Error
+      expect { session.with_timeout(0.5, &worker) }.to raise_error
     end
 
     it 'runs normally' do
-      expect { session.with_timeout(2, &worker) }.not_to raise_error Timeout::Error
+      expect { session.with_timeout(2, &worker) }.not_to raise_error
     end
   end
 
