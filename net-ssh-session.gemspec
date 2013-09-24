@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.authors     = ["Dan Sosedoff"]
   s.email       = ["dan.sosedoff@gmail.com"]
   
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'rspec',     '~> 2.13'
-  s.add_development_dependency 'simplecov', '~> 0.4'
+  s.add_development_dependency 'rake',      '~> 10'
+  s.add_development_dependency 'rspec',     '~> 2.14'
+  s.add_development_dependency 'simplecov', '~> 0.7'
 
   s.add_dependency 'net-ssh', '~> 2.6'
 
