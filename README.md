@@ -2,6 +2,8 @@
 
 A wrapper on top of `Net::SSH` and `Net::SSH::Shell` to provide a set of tools for ssh sessions
 
+[![Build Status](https://travis-ci.org/sosedoff/net-ssh-session.png?branch=master)](https://travis-ci.org/sosedoff/net-ssh-session)
+
 ## Install
 
 Install with rubygems:
