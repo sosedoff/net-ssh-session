@@ -198,16 +198,8 @@ session = Net::SSH::Session.new(host, user, password, :timeout => 10)
 This will limit any command execution time to 10 seconds. Error `Timeout::Error`
 will be raised when timeout is exceeded.
 
-## Credits
-
-Library code was extracted and modified from multiple sources:
-
-- Dan Sosedoff (@sosedoff)
-- Mitchell Hashimoto (@mitchellh)
-- Michael Klishin (@michaelklishin)
-- Sven Fuchs (@svenfuchs)
-- Travis-CI (@travis-ci)
-
 ## License
 
-See LICENSE file for details
+The MIT License (MIT)
+
+Copyright (c) 2013 Dan Sosedoff, <dan.sosedoff@gmail.com>
