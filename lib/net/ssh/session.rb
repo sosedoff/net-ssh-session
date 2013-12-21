@@ -24,6 +24,7 @@ module Net
       def initialize(host, user, password='', options={})
         @host          = host
         @user          = user
+        @port          = options[:port] || 22
         @password      = password
         @history       = []
         @track_history = true
@@ -154,7 +155,12 @@ module Net
       private
 
       def establish_connection
-        @connection = Net::SSH.start(host, user, :password => password)
+        opts = {
+          :password => @password,
+          :port     => @port
+        }
+
+        @connection = Net::SSH.start(host, user, opts)
         @shell = @connection.shell
       end
 
