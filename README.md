@@ -23,8 +23,13 @@ Basic usage:
 ```ruby
 require 'net/ssh/session'
 
-# Establish a connection
+# Initialize a new connection
 session = Net::SSH::Session.new(host, user, password)
+
+# Initialize connection on a different SSH port
+session = Net::SSH::Session.new(host, user, password, :port => 5000)
+
+# Connect to server
 session.open
 
 # If you want to set a connection timeout in seconds
