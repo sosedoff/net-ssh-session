@@ -5,19 +5,19 @@ describe Net::SSH::Session do
     context 'with :timeout option' do
       it 'raises error if timeout value is not numeric' do
         expect {
-          Net::SSH::Session.new('host', 'user', 'password', :timeout => 'data')
+          Net::SSH::Session.new('host', 'user', :password=>'password', :timeout => 'data')
         }.to raise_error ArgumentError, "Timeout value should be numeric"
       end
 
       it 'sets global session timeout value' do
-        session = Net::SSH::Session.new('host', 'user', 'password', :timeout => 1)
+        session = Net::SSH::Session.new('host', 'user', :password=>'password', :timeout => 1)
         expect(session.timeout).to eq 1
       end
     end
   end 
 
   describe '#method_missing' do
-    let(:session) { Net::SSH::Session.new('host', 'user', 'password') }
+    let(:session) { Net::SSH::Session.new('host', 'user', :password=>'password') }
     before { session.stub(:run).with("uname").and_return(fake_run("uname", "Linux")) }
 
     it 'runs a command based on missing method name' do
@@ -32,7 +32,7 @@ describe Net::SSH::Session do
       end
 
       let(:session) do
-        Net::SSH::Session.new('host', 'user', 'password', :timeout => 1)
+        Net::SSH::Session.new('host', 'user', :password=>'password', :timeout => 1)
       end
 
       before do
