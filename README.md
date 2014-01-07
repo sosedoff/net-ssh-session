@@ -204,4 +204,4 @@ will be raised when timeout is exceeded.
 
 The MIT License (MIT)
 
-Copyright (c) 2013 Dan Sosedoff, <dan.sosedoff@gmail.com>
+Copyright (c) 2012-2014 Dan Sosedoff, <dan.sosedoff@gmail.com>
